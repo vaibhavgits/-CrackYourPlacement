@@ -1,0 +1,26 @@
+A. O(nlogn)
+class Solution {
+    public int minMoves(int[] nums) {
+        int n = nums.length,count=0;
+        Arrays.sort(nums);
+        for(int i=n-1;i>=0;i--){
+            count += nums[i] - nums[0];
+        }
+        return count;
+    }
+}
+
+B. O(n)
+
+class Solution {
+    public int minMoves(int[] nums) {
+        int res=0, min = nums[0];
+        for(int i: nums){
+            min = Math.min(i,min);
+        }
+        for(int i: nums){
+            res += i-min;
+        }
+        return res;
+    }
+}
