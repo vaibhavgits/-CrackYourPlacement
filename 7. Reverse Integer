@@ -1,0 +1,15 @@
+class Solution {
+    public int reverse(int x) {
+        int reverse=0,dividend=x;    
+        while ( dividend != 0 ) {
+            if((reverse <= Integer.MAX_VALUE/10) && (reverse >= Integer.MIN_VALUE/10)){
+                reverse = (reverse*10) + (dividend%10);
+                dividend/=10;    
+            }
+            else{
+                return 0;
+            }
+        }
+        return reverse;
+    }
+}
