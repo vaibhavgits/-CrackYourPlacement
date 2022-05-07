@@ -1,0 +1,18 @@
+class Solution
+{
+    public boolean findPair(int arr[], int size, int n)
+    {
+        //code here.
+        Arrays.sort(arr);
+        int i=0,j=1;
+        while(j<size && i<size){
+            if(arr[j]-arr[i]==n && i!=j)
+            return true;
+            else if(arr[j]-arr[i] < n)
+            j++;
+            else
+            i++;
+        }
+        return false;
+    }
+}
