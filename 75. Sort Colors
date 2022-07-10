@@ -1,4 +1,4 @@
-Inplace Sort - HIBSQ (Heap, Insertion, Bubble, Selection, Qucik*)
+Inplace Sort - HIBSQ (Heap, Insertion, Bubble, Selection, Quick*)
 
 Solution 1 - Bubble Sort
 class Solution {
