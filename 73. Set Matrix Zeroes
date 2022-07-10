@@ -1,0 +1,64 @@
+Brute Force
+Traverse each element. If the element is 0 then change all the elements of corrosponding row and column to any value which is not in the range. eg. -1 if 0<=matrix[i][j]<=2^31-1. Now, again traverse the matrix and change the value -1 to 0.
+T.C. = O(n*m)*(n+m) 
+S.C. = O(1)
+
+Better
+Take 1 row(r[]) and 1 column(c[]) as dummy array. Traverse the matrix. If the element matrix[x][y]=0 then r[x]=0 and c[y]=0. After that traverse the matrix again. IF row[i] or col[j] is 0 then update that element to 0.
+T.C. = O(n*m)
+S.C. = O(n+m)
+
+Optimal
+Take matrix first row as dummy array and first clumn as dummy column. 
+T.C. = O(n*m)
+S.C. = O(1)
+
+class Solution {
+  public void setZeroes(int[][] matrix) {
+    Boolean isCol = false;
+    int R = matrix.length;
+    int C = matrix[0].length;
+
+    for (int i = 0; i < R; i++) {
+
+      // Since first cell for both first row and first column is the same i.e. matrix[0][0]
+      // We can use an additional variable for either the first row/column.
+      // For this solution we are using an additional variable for the first column
+      // and using matrix[0][0] for the first row.
+      if (matrix[i][0] == 0) {
+        isCol = true;
+      }
+
+      for (int j = 1; j < C; j++) {
+        // If an element is zero, we set the first element of the corresponding row and column to 0
+        if (matrix[i][j] == 0) {
+          matrix[0][j] = 0;
+          matrix[i][0] = 0;
+        }
+      }
+    }
+
+    // Iterate over the array once again and using the first row and first column, update the elements.
+    for (int i = 1; i < R; i++) {
+      for (int j = 1; j < C; j++) {
+        if (matrix[i][0] == 0 || matrix[0][j] == 0) {
+          matrix[i][j] = 0;
+        }
+      }
+    }
+
+    // See if the first row needs to be set to zero as well
+    if (matrix[0][0] == 0) {
+      for (int j = 0; j < C; j++) {
+        matrix[0][j] = 0;
+      }
+    }
+
+    // See if the first column needs to be set to zero as well
+    if (isCol) {
+      for (int i = 0; i < R; i++) {
+        matrix[i][0] = 0;
+      }
+    }
+  }
+}
