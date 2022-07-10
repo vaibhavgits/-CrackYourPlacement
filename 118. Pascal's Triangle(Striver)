@@ -1,0 +1,2 @@
+If you have to find value if row(r) and column(c) is given in Pascal's triangle then it is equal to the rCc i.e. r!/c!(r-c)!. 
+
